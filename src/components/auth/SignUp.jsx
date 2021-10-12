@@ -1,14 +1,14 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
-import { Input } from "reactstrap";
-import styled from "styled-components";
+import { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { Input } from 'reactstrap';
+import styled from 'styled-components';
 
-import CreditButton from "../buttons/Button";
-import CustomInput from "../inputs/CustomInput";
-import PasswordInput from "../inputs/PasswordInput";
-import usePasswordToggle from "hooks/usePasswordToggle";
+import CreditButton from '../buttons/Button';
+import CustomInput from '../inputs/CustomInput';
+import PasswordInput from '../inputs/PasswordInput';
+import usePasswordToggle from 'hooks/usePasswordToggle';
 
-import Image from "assets/images/create-account-abstract.svg";
+import Image from 'assets/images/create-account-abstract.svg';
 
 const SignUp = ({ history }) => {
   const [Type, Toggle] = usePasswordToggle();
@@ -18,78 +18,78 @@ const SignUp = ({ history }) => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    console.log("submitting", e);
-    history.replace("/auth/verifyemail");
+    console.log('submitting', e);
+    history.replace('/auth/verifyemail');
   };
 
   const handlePasswordChange = ({ target }) => {
     const { value, name } = target;
     const hideIcon = value.length < 1 ? false : true;
 
-    name === "password" ? setShowIcon(hideIcon) : setShowConfirmIcon(hideIcon);
+    name === 'password' ? setShowIcon(hideIcon) : setShowConfirmIcon(hideIcon);
   };
 
   return (
-    <Wrapper className="d-flex">
+    <Wrapper className='d-flex'>
       <Sidebar>
         <h1>Be in charge of your finance, know your credit score</h1>
       </Sidebar>
-      <Content className="d-flex justify-content-center align-items-center flex-column">
+      <Content className='d-flex justify-content-center align-items-center flex-column'>
         <h1>Create an Account!</h1>
         <p>Manage your credit!</p>
-        <Form autoComplete="off" onSubmit={handleSubmit}>
+        <Form autoComplete='off' onSubmit={handleSubmit}>
           <CustomInput
-            type="email"
-            name="email"
-            placeholder="Email"
-            autoComplete="off"
-            className="mb-3"
+            type='email'
+            name='email'
+            placeholder='Email'
+            autoComplete='off'
+            className='mb-3'
             required
           />
           <PasswordInput
             type={Type}
-            name="password"
-            placeholder="Password"
-            autoComplete="off"
+            name='password'
+            placeholder='Password'
+            autoComplete='off'
             onChange={handlePasswordChange}
             showIcon={showIcon}
             icon={Toggle}
-            className="mb-3"
+            className='mb-3'
             required
           />
           <PasswordInput
             type={ConfirmType}
-            name="confirm-password"
-            placeholder="Confirm password"
-            autoComplete="off"
+            name='confirm-password'
+            placeholder='Confirm password'
+            autoComplete='off'
             onChange={handlePasswordChange}
             showIcon={showConfirmIcon}
             icon={ConfirmToggle}
-            className="mb-3"
+            className='mb-3'
             required
           />
-          <PrivacyTerms className=" mb-4 d-flex">
+          <PrivacyTerms className=' mb-4 d-flex'>
             <Input
-              type="checkbox"
-              name="terms"
-              className="rounded-0 mr-2"
+              type='checkbox'
+              name='terms'
+              className='rounded-0 mr-2'
               required
             />
-            <p className="m-0">
-              I have read and agree to the{" "}
-              <a href="/auth/signup">Terms of Use</a> and{" "}
-              <a href="/auth/signup">Privacy Policy</a>
+            <p className='m-0'>
+              I have read and agree to the{' '}
+              <a href='/auth/signup'>Terms of Use</a> and{' '}
+              <a href='/auth/signup'>Privacy Policy</a>
             </p>
           </PrivacyTerms>
           <CreditButton
             styles={{
-              fontSize: "20px",
-              fontWeight: "600",
-              borderRadius: "50px",
-              maxWidth: "480px",
+              fontSize: '20px',
+              fontWeight: '600',
+              borderRadius: '50px',
+              maxWidth: '480px',
             }}
-            className="w-100 my-1"
-            type="submit"
+            className='w-100 my-1'
+            type='submit'
             inverted
           >
             Register
@@ -97,7 +97,7 @@ const SignUp = ({ history }) => {
         </Form>
         <p>
           Already have an account?
-          <Link to="/auth/login"> Login</Link>
+          <Link to='/auth/login'> Login</Link>
         </p>
       </Content>
     </Wrapper>
@@ -106,7 +106,7 @@ const SignUp = ({ history }) => {
 
 export default SignUp;
 
-const Wrapper = styled.div`
+export const Wrapper = styled.div`
   height: 800px;
 `;
 
@@ -133,7 +133,7 @@ const Sidebar = styled.aside`
   }
 `;
 
-const Content = styled.main`
+export const Content = styled.main`
   width: 60%;
   text-align: center;
   color: var(--lightblue);
@@ -143,7 +143,7 @@ const Content = styled.main`
     font-weight: 600;
   }
   a {
-    font-family: "CamptonLight";
+    font-family: 'CamptonLight';
     color: var(--darkblue);
     font-weight: 600;
   }
@@ -167,7 +167,7 @@ export const Form = styled.form`
   }
 `;
 
-const PrivacyTerms = styled.div`
+export const PrivacyTerms = styled.div`
   p {
     font-size: clamp(1rem, 2vw, 1.13rem);
     white-space: nowrap;
